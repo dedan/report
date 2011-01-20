@@ -50,13 +50,13 @@
 \usepackage{caption}
 
 
-%%%%%%%%%%%%%%%%%%%%%% TODO stuff
+%%%%%%%%%%%%%%%%%%%%%% to do stuff
 
 % graph painting
 \usepackage{tikz}
-% Command for inserting a todo item
+% Command for inserting a to do item
 \newcommand{\todo}[1]{%
-% Add to todo list
+% Add to to do list
 \addcontentsline{tdo}{todo}{\protect{#1}}%
 %
 \begin{tikzpicture}[remember picture, baseline=-0.75ex]%
@@ -81,7 +81,7 @@
 %
 }%
 
-\makeatletter \newcommand \listoftodos{\section*{Todo list} \@starttoc{tdo}}
+\makeatletter \newcommand \listoftodos{\section*{To do list} \@starttoc{tdo}}
  \newcommand\l@todo[2]
    {\par\noindent \textit{#2}, \parbox{10cm}{#1}\par} \makeatother
 

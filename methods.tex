@@ -1,3 +1,4 @@
+%!TEX root = /Users/dedan/bccn/lab_rotations/yifat/report/report_yifat.tex
 \chapter{Methods} % (fold)
 \label{sg:cha:methods}
 
@@ -37,31 +38,26 @@ In both the behavioral task and stimulation condition, EMG activity was recorded
 % ========================================================
 \subsection{Muscle response pattern of natural movement} % (fold)
 \label{sg:sub:natural_movement}
-In order to ensure correctness and comparability of the responses, only correct trials were selected for this analysis. Correctness of the joystick movement into the direction of the goal was defined as trials in which reaction time was between -200 to 500 ms, movement time between 0 to 1500 ms and in which the angular deviation (at max velocity) was smaller than 35 deg. 
-\todo{maybe add distribution plots}
-\todo{a plot with a better explanation of what reaction and movement time means}
-To compute a response pattern of muscle activations during natural movement, the torque onset (force on the joystick exerted by the monkey) was used as the trigger for average window computation. To get comparable results for different EMG channels, in spite of the fact that muscles have different background activation and variability they had to be normalized. A simple but reasonable and effective normalization technique is to define the response magnitude as change in mean activity in the post-trigger window compared to mean activity in the pre-trigger window. This method can deal with noisy channels without silencing them and is not affected by local DC offsets as only the change of activation is used as response magnitude. The mean activity in a 500 ms window after torque onset was divided by the mean activity in a time window of 500 ms before visual cue onset, as this showed to give the best baseline estimate. Every trial of the recording session resulted in one response pattern. 
-\todo{give number of average amount of trials or a plot of n\_trials distribution?}
 
+
+To compute a response pattern of muscle activations during natural movement, the torque onset (force on the joystick exerted by the monkey) was used as the trigger for average window computation. To get comparable results for different EMG channels, in spite of the fact that muscles have different background activation and variability they had to be normalized. A simple but reasonable and effective normalization technique is to define the response magnitude as change in mean activity in the post-trigger window compared to mean activity in the pre-trigger window. This method can deal with noisy channels without silencing them and is not affected by local DC offsets as only the change of activation is used as response magnitude. The mean activity in a 500 ms window after torque onset was divided by the mean activity in a time window of 500 ms before visual cue onset, as this showed to give the best baseline estimate. Every trial of the recording session resulted in one response pattern.
 
 \subsubsection{Computation of preferred directions (PDs)} % (fold)
 \label{sg:ssub:pds}
 
-A preferred direction (PD) for each muscle was computed by a simple vector summation approach which yielded nearly similar results than a cosine fit used by Georgopoulos et al~\citet{Georgopoulos:1982p4165} in a similar study. For every muscle an average activity rate was computed for movement in each of the 8 directions~\rref{sg:fig:images_cstd_pd}. This activity rates can be seen as 8 points in a polar coordinate system with $r$ being the mean activity rate and $\theta$ corresponding to the target direction. These vectors were translated into the cartesian coordinate system where the vector sum was computed in order to give a measure of the \emph{weighted mean direction}. When translated back into the polar coordinate system, the obtained $\theta$ will give the preferred direction and the length of $r$ can be used to assess the significance of the tuning to a preferred direction. The $r$ value was compared to tuning significance of random muscle activation patterns in a bootstrapping test and only PDs from sessions with significantly ($p < 0.05$) higher tuning than from random muscle activation were used furthermore.
-\todo{check whether I really still do this (I mean the sorting out)}
+A preferred direction (PD) for each muscle was computed by a simple vector summation approach which yielded nearly similar results than a cosine fit used by Georgopoulos et al~\citet{Georgopoulos:1982p4165} in a similar study. For every muscle an average activity rate was computed for movement in each of the 8 directions~\rref{sg:fig:images_pd}. This activity rates can be seen as 8 points in a polar coordinate system with $r$ being the mean activity rate and $\theta$ corresponding to the target direction. These vectors were translated into the cartesian coordinate system where the vector sum was computed in order to give a measure of the \emph{weighted mean direction}. When translated back into the polar coordinate system, the obtained $\theta$ will give the preferred direction and the length of $r$ can be used to assess the significance of the tuning to a preferred direction. The $r$ value was compared to tuning significance of random muscle activation patterns in a bootstrapping test (5000 repetitions) and the PD significance of a session was set to the fraction of the bootstrapping results which had a higher $r$. 
 
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.8\textwidth]{images/cstd_pd.pdf}
+		\includegraphics[width=0.8\textwidth]{images/pd.jpg}
 	\caption
 	{
 	a) the 8 directions of movement. \\
 	b) tuning curve of a muscle - mean activation in each of the directions. \\
 	c) vector summation of tuning curve in cartesian space. \\
 	}
-	\label{sg:fig:images_cstd_pd}
+	\label{sg:fig:images_pd}
 \end{figure}
-\todo{move d) and e) of the figure into a separate figure in the interesting spaces section}
 % subsubsection pds (end)
 
 % subsection natural_movement (end)
@@ -187,9 +183,7 @@ To solve the factorization problem the built-in NMF implementation of MATLAB 200
 
 Although muscles in general do not posses \emph{negative activation}, during some movements they might be less active than their average activity during movement. In contrast to NMF, the PCAICA algorithm is also capable of detecting and showing these inhibitory effects in muscle activation patterns. 
 
-First the dimensionality of the data was reduced by principal component analysis (PCA), which can be described as a dimensionality reduction with the objective to lose as little information as possible. Therefore the data is transferred into a lower dimensional subspace whose orthogonal basis is oriented in the direction of the largest variance by minimizing the correlation of the data-points (muscle activation patterns). This basis is chosen in such a way that the first basis vector explains the largest possible part of the variance of the data, the second one explains the possible largest part of remaining variance, and so forth. 
-\todo{can I assume this properties of pca as background of the reader?}
-Afterwards the independent component analysis (ICA) was applied to this subspace in order to increase the statistical independence of the PCA coefficients (also know as loadings). Principle component analysis was applied to the data matrix $A$ by using the MATLAB function \emph{princomp} for which the number of variables corresponds to the number of muscles and the number of observations to the number of trials. This function also applies the required conversion to a zero-meaned distribution as it is required for PCA so it can directly be used with the same data as the NMF-algorithm. Subsequently the \emph{runica} function from the eeglab package~\citet{eeg} in its extended version was used on the scores of the first N selected eigenvectors. 
+First the dimensionality of the data was reduced by principal component analysis (PCA), which can be described as a dimensionality reduction with the objective to lose as little information as possible. Therefore the data is transferred into a lower dimensional subspace whose orthogonal basis is oriented in the direction of the largest variance by minimizing the correlation of the data-points (muscle activation patterns). This basis is chosen in such a way that the first basis vector explains the largest possible part of the variance of the data, the second one explains the possible largest part of remaining variance, and so forth. Afterwards the independent component analysis (ICA) was applied to this subspace in order to increase the statistical independence of the PCA coefficients (also know as loadings). Principle component analysis was applied to the data matrix $A$ by using the MATLAB function \emph{princomp} for which the number of variables corresponds to the number of muscles and the number of observations to the number of trials. This function also applies the required conversion to a zero-meaned distribution as it is required for PCA so it can directly be used with the same data as the NMF-algorithm. Subsequently the \emph{runica} function from the eeglab package~\citet{eeg} in its extended version was used on the scores of the first N selected eigenvectors. 
 \todo{better explanation why and how we used ica}
 This procedure generates components that may have negative values. However, since both PCA and ICA operate on signals with zero mean, a negative value for a given muscle can be interpreted as being activated less that its overall positive non-zero mean and can therefore reflect a inhibition of the muscle. The ICA section of the algorithm does not alter the reconstruction error that is determined by the eigenvalues of the first N selected principal components.
 % subsection pcaica (end)
@@ -212,9 +206,7 @@ Another reason to apply several algorithms in parallel is the difficulty to chos
 %===============================================================================
 \subsection{Synergy comparison} % (fold)
 \label{sg:sub:comp}
-To compare two groups of synergies obtained by different methods, the vectors were first normalized ( $\abss{x} = 1$ ) and then compared by using the dot product between them as a similarity measure. Comparison of two sets of synergies that were obtained by different algorithms, was realized by matching each vector of the first set against the vector most similar to it from the second set, in decreasing similarity order starting with the pair having maximal similarity. 
-\todo{add that dot product was only used for grouping, matching score by corrcoef}
-This method showed good results in terms of grouping similar synergies together, that could also be detected as very similar by visual inspection, although it does not give an objective and quantitative measure as the similarity measure is biased by the statistical properties (mostly non-negativity) of the synergy vectors. For quantitative analysis it is planned to make use of bootstrap methods as used in other studies~\citet{AdAvella:2005p2330}. Furthermore the correlation between two groups was computed on two vectors that contained all connected muscle activation patterns of a group.
+To compare two groups of synergies obtained by different methods, the vectors were first normalized ( $\abss{x} = 1$ ) and then compared by using the dot product between them as a similarity measure. Comparison of two sets of synergies that were obtained by different algorithms, was realized by matching each vector of the first set against the vector most similar to it from the second set, in decreasing similarity order starting with the pair having maximal similarity. However the dot product was only used as a similarity measure for the grouping. As a matching score, shown also in the plots, the correlation coefficient was used as it showed to be less influenced by statistical properties of the synergies. This method showed good results in terms of grouping similar synergies together, that could also be detected as very similar by visual inspection, although it does not give an objective and quantitative measure as the similarity measure is biased by the statistical properties (mostly non-negativity) of the synergy vectors. For quantitative analysis it is planned to make use of bootstrap methods as used in other studies~\citet{AdAvella:2005p2330}. Furthermore the correlation between two groups was computed on two vectors that contained all connected muscle activation patterns of a group.
 \todo{when I apply my bootstrap method, explain here how it was done}
 % explanation of matching score figure
 \begin{figure}[ht]
@@ -245,7 +237,7 @@ This method showed good results in terms of grouping similar synergies together,
 \subsection{Muscle synergies in the space of preferred directions (PDs)} % (fold)
 \label{sg:sub:pd}
 
-As a measurement of \emph{directedness} of a certain muscle activation pattern, the circular standard deviation (\emph{cstd}) of PDs belonging to muscles activated within this pattern was computed. The \emph{cstd} for a given vector $\vec{x}$ of radians is defined by 
+As a measurement of \emph{directedness} of a certain muscle activation pattern, the circular standard deviation (\emph{cstd}) of PDs belonging to muscles activated within this pattern was computed. All circular statistics were done by using~\citet{circ_stat}. The \emph{cstd} for a given vector $\vec{x}$ of radians is defined by 
 \begin{equation}
 	\emph{cstd} := \sqrt{-2 \ln{\bar{R}}}
 \end{equation}
@@ -261,17 +253,14 @@ to a distribution of \emph{cstd}s from random samples of muscles drawn from a di
 
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.8\textwidth]{images/cstd_pd.pdf}
+		\includegraphics[width=0.8\textwidth]{images/cstd.jpg}
 	\caption
 	{
 	d) a muscle activation pattern with small circular standard deviation \\
 	e) a muscle activation pattern with large \emph{cstd}.
 	}
-	\label{sg:fig:images_cstd_pd}
+	\label{sg:fig:images_cstd}
 \end{figure}
-\todo{is there any result now, where I measure the directedness of muscle synergies?}
-\todo{move d) and e) of the figure into a separate figure in the interesting spaces section}
-
 % subsection pd (end)
 
 
@@ -282,12 +271,7 @@ to a distribution of \emph{cstd}s from random samples of muscles drawn from a di
 \subsection{Projection of evoked responses on natural synergies} % (fold)
 \label{sg:sub:projection}
 
-The question, whether the cortical stimulation induced responses are just arbitrary activations of muscles that contain some structure but are not related to natural activation patterns or whether they have something in common with the activation patterns that were found during natural movement is an interesting question. If this were the case, it would imply that the stimulation sites are in fact the sites where neuronal activation causes modular organized muscle response patterns, if these happen to be found during natural movement.
-
-In order to find out whether the evoked responses tend to reside in the same subspace as spanned by the natural movement synergies, a measurement for subspace similarity had to be found. Tresch et al. used the principle angles between the two subspaces, spanned by synergies found in the evoked responses and during natural movement~\citet{Tresch:2006p3766}. Some experiments were done with this technique but I somehow never managed to get reliable and
-comparable results from it and therefore another method was chosen.
-\todo{cannot be written like this, also yifat offered and explanation why not using the principal angles!?}
-The idea is to project the evoked responses to the subspace which is spanned by the natural synergies. When this transformation does not change the data, it already resides within this subspace. In more technical language, the data was orthogonally projected to an orthonormal basis constructed from the natural synergies and also to the orthogonal complement of this basis. How much the data tends to reside within one of the two subspaces is measured by the ratio between the sum of vector lengths (L2 norm) over all responses after projection to the two bases.
+The question, whether the cortical stimulation induced responses are just arbitrary activations of muscles that contain some structure but are not related to natural activation patterns or whether they have something in common with the activation patterns that were found during natural movement is an interesting question. If this were the case, it would imply that the stimulation sites are in fact the sites where neuronal activation causes modular organized muscle response patterns, if these happen to be found during natural movement. The idea is to project the evoked responses to the subspace which is spanned by the natural synergies. When this transformation does not change the data, it already resides within this subspace. In more technical language, the data was orthogonally projected to an orthonormal basis constructed from the natural synergies and also to the orthogonal complement of this basis. How much the data tends to reside within one of the two subspaces is measured by the ratio between the sum of vector lengths (L2 norm) over all responses after projection to the two bases.
 
 \begin{equation}
 	ratio = \frac
