@@ -11,7 +11,7 @@
 
 % preprocessing, response patterns, rank1
 
-In order to ensure correctness and comparability of the responses, only correct trials were selected for this analysis. Correctness of the joystick movement into the direction of the goal was defined as trials in which reaction time was between -200 to 500 ms, movement time between 0 to 1500 ms and in which the angular deviation (at max velocity) was smaller than 35 deg. Reaction time is the interval between go signal and measurable torque onset, movement time from torque onset until return reaching target position and angular deviation is the angle between the shortest line from the center to the peripheral target and the actual movement at maximum velocity of movement.
+In order to ensure correctness and comparability of the responses, only correct trials were selected for this analysis. Correctness of the torque exerted on the manipulandum into the direction of the goal was defined as trials in which reaction time was between -200 to 500 ms, movement time between 0 to 1500 ms and in which the angular deviation (at max velocity) was smaller than 35 deg. Reaction time is the interval between go signal and measurable torque onset, movement time from torque onset until return reaching target position and angular deviation is the angle between the shortest line from the center to the peripheral target and the actual movement at maximum velocity of movement.
 \begin{figure}[ht]
     \centering
         \includegraphics[width=0.8\textwidth]{images/behav_crit.jpg}
@@ -59,7 +59,7 @@ A plot of the preferred directions over sessions shows that they are stable over
 \end{figure}
 
 
-After the computation of relative activation, the data was in form of a $\text{trials} \times \text{channels}$ matrix for each session and hand position. The whole subsequent analysis was always performed in parallel for separated hand positions and also for a $\text{supination trials} + \text{pronation trials} \times \text{channels}$ matrix, containing the data for both hand positions. First the MF-algorithms were applied to the matrices containing pronation-position trying to reduce the dimensionality of the data to only one synergy (rank 1 model order). This was done in order to sort out sessions were EMG signals across channels are highly correlated. The PCAICA-algorithm led to generally smaller error values, but they were highly correlated with the remaining error values of the NMF-algorithm (r: 0.85, p << 0.001). NMF was, due to its biologically plausible assumptions, preferred in the further analysis and therefore also chosen for selection of sessions. 
+After the computation of evoked muscle-activation, the data was in form of a $\mathrm{trials} \times \mathrm{channels}$ matrix for each session and hand position. The whole subsequent analysis was always performed in parallel for separated hand positions and also for a $(\mathrm{supination trials} + \mathrm{pronation trials}) \times \mathrm{channels}$ 2-D matrix, containing the data for both hand positions. First the MF-algorithms were applied to the matrices containing pronation-position trying to reduce the dimensionality of the data to only one synergy (rank 1 model order). This was done in order to sort out sessions were EMG signals across channels are highly correlated. The PCAICA-algorithm led to generally smaller error values, but they were highly correlated with the remaining error values of the NMF-algorithm (r: 0.85, p << 0.001). NMF was, due to its biologically plausible assumptions, preferred in the further analysis and therefore also chosen for selection of sessions. 
 
 % rank 1 figure
 \begin{figure}[ht]
@@ -85,7 +85,7 @@ The NMF remaining error plot suggests, that the data for each session can be red
 	\label{sg:fig:images_all_resid_non}
 \end{figure}
 
-To assess the stability of the synergies over sessions, all synergies extracted from single sessions were as in the method to compare NMF stability~\rref{sg:fig:images_nmf_expl_stab3} pooled in one data set and sorted according to a k-means clustering with 3 prototypes. The distribution of group size does not exhibit perfect categorization (STD 0) as in the stability analyses but still shows clear clustering and therefore stable muscle synergies over sessions. The prototypes of the k-means clustering are the average synergies steadily found over all sessions. This analysis was done for the pronation hand-position as this was available for all monkeys
+To assess the stability of the synergies over sessions, all synergies extracted from single sessions were as in the method to compare NMF stability~\rref{sg:fig:images_nmf_expl_stab3} pooled in one data set and sorted according to a k-means clustering with 3 prototypes. The distribution of group size does not exhibit perfect categorization (STD 0) as in the stability analyses but still shows clear clustering and therefore stable muscle synergies over sessions~\rref{sg:fig:images_syn_consist_sessions_std}. The prototypes of the k-means clustering are the average synergies steadily found over all sessions. This analysis was done for the pronation hand-position as this was available for all monkeys
 
 
 % nmf stability over sessions (cluster std)
@@ -209,7 +209,7 @@ A distribution of muscle field size can be seen in figure~\rref{sg:fig:images_re
     \label{sg:fig:images_responses}
 \end{figure}
 
-In each location, stimulation was applied with different stimulation amplitudes (from minimum 50 up to 250 $\mu A$) but not in all locations with all amplitudes. For each location the stimulation amplitude closest to $150 \mu A$ was chosen as most data was available around this strength~\rref{sg:fig:stimamp_dist} \emph{c}.
+In each location, single pulse stimulation was applied with different stimulation amplitudes (from minimum 50 up to 250 $\mu A$) but not in all locations with all amplitudes. For each location the stimulation amplitude closest to $150 \mu A$ was chosen as most data was available around this strength~\rref{sg:fig:stimamp_dist} \emph{c}. Please notice that these are single pulse stimulations in contrast to the 50 ms \@ 300 Hz used for the mapping of the cortical surface.
 
 % figure of stim amp distribution
 \begin{figure}[ht]
@@ -240,8 +240,14 @@ Interesting is to plot the cluster membership on the cortex which reveals for bo
 \begin{figure}[ht]
     \centering
         \includegraphics[width=0.8\textwidth]{images/cluster_vega.jpg}
-    \caption{clusters on cortex}
+    \caption{clusters on cortex (subject V)}
     \label{sg:fig:images_cluster_vega}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/cluster_chalva.jpg}
+    \caption{clusters on cortex (subject C)}
+    \label{sg:fig:images_cluster_chalva}
 \end{figure}
 
 
@@ -266,7 +272,7 @@ In order to compare the evoked responses with the synergies found during natural
 \begin{figure}[ht]
 	\centering
 		\includegraphics[width=0.5\textwidth]{images/projections.jpg}
-	\caption{Projection ratios of evoked responses, compared to 10000 runs of data with same statistical properties and shuffled versions of itself}
+	\caption{Projection ratios of evoked responses, compared to 10000 runs of data with same statistical properties and shuffled versions of itself. The red line is the projection ratio of the original and un-shuffled evoked responses. It clearly shows that the evoked responses reside much more in the subspace spanned by the synergies than random data with same statistical properties.}
 	\label{sg:fig:images_projection}
 \end{figure}
 
