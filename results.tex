@@ -14,7 +14,7 @@
 In order to ensure correctness and comparability of the responses, only correct trials were selected for this analysis. Correctness of the torque exerted on the manipulandum into the direction of the goal was defined as trials in which reaction time was between -200 to 500 ms, movement time between 0 to 1500 ms and in which the angular deviation (at max velocity) was smaller than 35 deg. Reaction time is the interval between go signal and measurable torque onset, movement time from torque onset until return reaching target position and angular deviation is the angle between the shortest line from the center to the peripheral target and the actual movement at maximum velocity of movement.
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/behav_crit.jpg}
+        \includegraphics[width=0.8\textwidth]{images/behav_crit.pdf}
     \caption{Distribution of behavioral criteria.}
     \label{sg:fig:images_behav_crit}
 \end{figure}
@@ -53,7 +53,7 @@ The selection was done by using the pronation position as supination was not ava
 A plot of the preferred directions over sessions shows that they are stable over sessions and mostly have a significant p value. For all monkeys most of the channels have high significance values and low circular standard deviation. This allows to compute the circular mean. Less significance or higher variance in a channel does not necessarily mean that the recording was noisy. It can just mean that the muscle is not so much tuned to a special direction. Also the fact that e.g. channel 9 of subject V shows good stability for one hand-position but not for the other one. This supports the idea that small significance does not mean noisy channel but more untuned muscle
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/pd_consist_feather_allvega.jpg}
+        \includegraphics[width=0.8\textwidth]{images/pd_consist_feather_vega.pdf}
     \caption{The plot shows that the tuning of a muscle with respect to a preferred direction was significant for most of the sessions. Also that the PDs were stable over sessions which is expressed in low values of the standard deviation. Note that for example channel 9 suggests that unstable PD over session does not necessarily mean noisy recording, but can also be posture related lack of tuning of a muscle.}
     \label{sg:fig:images_pd_consist_feather_allvega}
 \end{figure}
@@ -64,7 +64,7 @@ After the computation of evoked muscle-activation, the data was in form of a $\m
 % rank 1 figure
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.7\textwidth]{images/rank1.jpg}
+		\includegraphics[width=0.7\textwidth]{images/rank1.pdf}
 	\caption{
 Error values for NMF in pronation and supination when data was reduced to a 1 dimensional model. Sessions with an NMF remaining error higher than 25 \% were chosen for further analysis.
 	}
@@ -77,7 +77,7 @@ The NMF remaining error plot suggests, that the data for each session can be red
 % all resid nonevoked figure
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.9\textwidth]{images/resid_test.jpg}
+		\includegraphics[width=0.9\textwidth]{images/resid_test.pdf}
 	\caption
 	{
 	remaining error for data from pronation hand-position has 15 \% remaining error if reduced to a 3 dimensional model. Randomized data with same statistical properties (shuffled data) shows much higher error values.
@@ -91,7 +91,7 @@ To assess the stability of the synergies over sessions, all synergies extracted 
 % nmf stability over sessions (cluster std)
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/syn_consist_sessions_std.jpg}
+    \includegraphics[width=0.8\textwidth]{images/syn_consist_sessions_std.pdf}
     \caption{Distribution and std of the group sizes when clustering the synergies obtained from different sessions}
     \label{sg:fig:images_syn_consist_sessions_std}
 \end{figure}
@@ -100,7 +100,7 @@ To assess the stability of the synergies over sessions, all synergies extracted 
 % consist over sessions and method explanation plot (chalva)
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/syn_consist_sessions_chalva.jpg}
+    \includegraphics[width=0.8\textwidth]{images/syn_consist_sessions_chalva.pdf}
     \caption{
     all data in this plot is from pronation hand-position\\
     \textbf{a)} The stability of extracted synergies over sessions was assessed similar to the stability measure of the MF-algorithm~\rref{sg:fig:images_nmf_expl_stab3}. All results were pooled and clustered by a k-means algorithm with the number of prototypes corresponding to the number of synergies. Similarity within the three blocks demonstrates stability over sessions. The strength of activation is coded by color. Note that color-coding is distinct for NMF- and PCAICA extracted synergies as NMF gives only positive results.synergies sorted according to cluster membership for both methods\\
@@ -136,14 +136,34 @@ To assess the stability of the synergies over sessions, all synergies extracted 
 For subjects D and V data from 2 hand-positions was available. However, the synergies computed in separate conditions showed very strong similarity. 
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/post_consist_vega.jpg}
+        \includegraphics[width=0.8\textwidth]{images/post_consist_vega.pdf}
     \caption{Example of a posture similarity plot (subject V)}
     \label{sg:fig:images_post_consist_vega}
 \end{figure}
 
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/syn_rose_pro_chalva.pdf}
+    \caption{synergies in preferred directions (subject C)}
+    \label{sg:fig:images_syn_rose_pro_chalva}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/syn_rose_pro_darma.pdf}
+    \caption{synergies in preferred directions (subject D)}
+    \label{sg:fig:images_syn_rose_pro_darma}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/syn_rose_pro_vega.pdf}
+    \caption{synergies in preferred directions (subject V)}
+    \label{sg:fig:images_syn_rose_pro_vega}
+\end{figure}
 
-It was thought that the circular standard deviation of muscle synergies in the space of preferred directions can be used to assess whether the result of matrix-factorization
-algorithms is realistic with respect to natural movement. The idea was that meaningful muscle activation patterns should have a lower \emph{cstd} than random activation patters in order to initiate movement in certain directions. The \emph{cstd} was computed on the average synergies of all single sessions by the method explained in Section~\ref{sg:sub:pd}. For none of these synergies a significantly smaller circular standard deviation than for random data was found \rref{sg:fig:images_circ_std_syns}.
+
+
+
+It was thought that the circular standard deviation of muscle synergies in the space of preferred directions can be used to assess whether the result of matrix-factorization algorithms is realistic with respect to natural movement. The idea was that meaningful muscle activation patterns should have a lower \emph{cstd} than random activation patters in order to initiate movement in certain directions. The \emph{cstd} was computed on the average synergies of all single sessions by the method explained in Section~\ref{sg:sub:pd}. For none of these synergies a significantly smaller circular standard deviation than for random data was found \rref{sg:fig:images_circ_std_syns}.
 As the PDs proved to be significant and the synergies were stably extracted by different algorithms, the reason for this result has to be found within the directedness measurement or in the this measurement underlying assumptions that muscle activation patterns correspond to directed movement. Within the current approach, a lot of averaging takes place during computation. First the PD for a muscle is computed by a vector summation, then this PD is averaged over all significant session
 and finally this computed PD is assigned to a muscle in an activation pattern,
 only scaled in length by the value of the activation. As a lot of information is lost within this process,
@@ -157,7 +177,7 @@ More promising measures for the meaningfulness of muscle activation patterns wil
 of this thesis.
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/circ_std_syns.jpg}
+        \includegraphics[width=0.8\textwidth]{images/circ_std_syns.pdf}
     \caption{This plot investigates whether the found synergies are more \emph{directed} than random data with the same statistical properties. Random activation patterns drawn from the values of single session synergies are compared with the average synergies over all sessions. For all three monkeys it does not seam as the synergies are more directed than by chance.}
     \label{sg:fig:images_circ_std_syns}
 \end{figure}
@@ -214,38 +234,60 @@ In each location, single pulse stimulation was applied with different stimulatio
 % figure of stim amp distribution
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.5\textwidth]{images/stim_amp_dist.jpg}
+		\includegraphics[width=0.5\textwidth]{images/stim_amp_dist.pdf}
 	\caption{
 		For each location the stimulation amplitude closest to $150 \mu A$ was chosen. The distribution shows the actually chosen stimulation amplitudes as $150 \mu A$ was not available for all locations.}
 	\label{sg:fig:stimamp_dist}
 \end{figure}
-
-
-The plot of response fields and the distribution of actual responses shows that the stimulation induced responses result in a sparse matrix. Therefore we did not calculate synergies on this data by applying MF-algorithms. In contrast a simple kmeans clustering was used in order to look for structure in the data. A plot of mean distance of a cluster prototype to its assigned data-points suggest to look for three clusters. For subject V where both hand-positions were available no influence of the posture on the evoked responses can be found. Three clearly distinct clusters can be found for both subjects
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/raw_clusters_chalva.jpg}
+        \includegraphics[width=0.8\textwidth]{images/response_dist.pdf}
+    \caption{Distribution of response values. The part of the distribution which is colored red are the values from significant responses.}
+    \label{sg:fig:images_response_dist}
+\end{figure}
+
+
+For each subject we calculated the fraction of stimulations for which the response field was 0 (C: 0.31 V: 0.14286). The plot of response fields and the distribution of actual responses shows that the stimulation induced responses result in a sparse matrix. Therefore we did not calculate synergies on this data by applying MF-algorithms. In contrast a simple kmeans clustering was used in order to look for structure in the data. A plot of mean distance of a cluster prototype to its assigned data-points suggest to look for three clusters. For subject V where both hand-positions were available no influence of the posture on the evoked responses can be found. Three clearly distinct clusters can be found for both subjects
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/raw_clusters_chalva.pdf}
     \caption{The curve in the middle suggests a clustering with four prototypes, but when such a clustering is done, the distribution of which point is assigned to which cluster (topleft figure) shows that there is an extreme outlier which gets its own cluster. When this outlier is removed from the data, the mean distance plot (lowest plot) shows a clear \emph{elbow} for 3 clusters. The topright plot shows the clusters in the data when projected on their first two principal components.}
     \label{sg:fig:images_raw_clusters_chalva}
 \end{figure}
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/raw_clusters_vega.jpg}
+        \includegraphics[width=0.8\textwidth]{images/raw_clusters_vega.pdf}
     \caption{For subject V a clearly visible \emph{elbow} (in the center plot) also suggests to cluster the data into three clusters. The topleft plot shows again the distribution of cluster membership and the topright one the clustered data. The lower-left plot is again a projection on the principal components and the lower-right shows similarity of clusters prototypes when the data was first separated by hand-posture. On top of this last plot the matching scores between the clusters are written.}
     \label{sg:fig:Documents_uni_yifat_lab_results_evoked_syns_raw_clusters_vega}
 \end{figure}
 
 
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/center_rose_chalva.pdf}
+    \caption{Clusters of subject C plotted in the PD space. PDs computed during the natural movement. The PDs from the pronation handposition are used for this plot}
+    \label{sg:fig:images_center_rose_chalva}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\textwidth]{images/center_rose_vega.pdf}
+    \caption{Clusters of subject V plotted in the PD space. PDs computed during the natural movement. The PDs from the pronation handposition are used for this plot}
+    \label{sg:fig:images_center_rose_vega}
+\end{figure}
+
+
+
+
 Interesting is to plot the cluster membership on the cortex which reveals for both subjects that there is a type of response which can be evoked all over the area in which stimulation took place but there are also responses which are clearly related to the stimulation site. 
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/cluster_vega.jpg}
+        \includegraphics[width=0.8\textwidth]{images/cluster_vega.pdf}
     \caption{clusters on cortex (subject V)}
     \label{sg:fig:images_cluster_vega}
 \end{figure}
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/cluster_chalva.jpg}
+        \includegraphics[width=0.8\textwidth]{images/cluster_chalva.pdf}
     \caption{clusters on cortex (subject C)}
     \label{sg:fig:images_cluster_chalva}
 \end{figure}
@@ -267,11 +309,14 @@ Interesting is to plot the cluster membership on the cortex which reveals for bo
 The preferred directions that were computed for each muscle in each recording session showed to be stable over recording days. There is a significant and also visually obvious difference of preferred directions depending on the posture of the hand~\rref{sg:fig:images_pd_consist_feather_allvega}. As the PDs showed to be stable over recording sessions, for each muscle the average over sessions was computed and used for further analysis.
 
 
+\todo{rewrite this paragraph}
+
+The question, whether the cortical stimulation induced responses are just arbitrary activations of muscles that contain some structure but are not related to natural activation patterns or whether they have something in common with the activation patterns that were found during natural movement is an interesting question. If this were the case, it would imply that the stimulation sites are in fact the sites where neuronal activation causes modular organized muscle response patterns, if these happen to be found during natural movement. 
 
 In order to compare the evoked responses with the synergies found during natural movement evaluation of projections onto different subspaces was applied. The natural movement synergies computed on the pooled data from all sessions were used for this method. The data from evoked responses was projected onto the orthonormalized subspace that is spanned by the synergies and also on its orthogonal complement. The ratio of the vector sums of the data projected onto the two subspaces was for the evoked responses significantly higher than for random or randomized data. Although it is not a quantitative measure that gives a value for the relation between the two, the result suggests that there is a significant relation between the muscle response patterns, evoked by cortical stimulation and the synergies extracted from natural movement. 
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.5\textwidth]{images/projections.jpg}
+		\includegraphics[width=0.5\textwidth]{images/projections.pdf}
 	\caption{Projection ratios of evoked responses, compared to 10000 runs of data with same statistical properties and shuffled versions of itself. The red line is the projection ratio of the original and un-shuffled evoked responses. It clearly shows that the evoked responses reside much more in the subspace spanned by the synergies than random data with same statistical properties.}
 	\label{sg:fig:images_projection}
 \end{figure}
