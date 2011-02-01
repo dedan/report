@@ -11,16 +11,26 @@
 
 % preprocessing, response patterns, rank1
 
-In order to ensure correctness and comparability of the responses, only correct trials were selected for this analysis. Correctness of the torque exerted on the manipulandum into the direction of the goal was defined as trials in which reaction time was between -200 to 500 ms, movement time between 0 to 1500 ms and in which the angular deviation (at max velocity) was smaller than 35 deg. Reaction time is the interval between go signal and measurable torque onset, movement time from torque onset until return reaching target position and angular deviation is the angle between the shortest line from the center to the peripheral target and the actual movement at maximum velocity of movement.
+In order to ensure correctness and comparability of the responses, only correct trials were selected for this analysis. Correctness of the torque exerted on the manipulandum into the direction of the goal was defined as trials in which reaction time was between -200 to 500 ms, movement time between 0 to 1500 ms and in which the angular deviation (at max velocity) was smaller than 35 deg. Reaction time is the interval between go signal and measurable torque onset, movement time from torque onset until reaching target position and angular deviation is the angle between the shortest line from the center to the peripheral target and the actual movement at maximum velocity of movement.
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/behav_crit.pdf}
-    \caption{Distribution of behavioral criteria.}
+    \subfigure[Reaction Time]{
+    \includegraphics[width=0.3\textwidth]{images/movement.pdf}
+    \label{fig:behav:movement}
+    }
+    \subfigure[Movement Time]{
+    \includegraphics[width=0.3\textwidth]{images/reaction.pdf}
+    \label{fig:behav:reaction}
+    }
+    \subfigure[Angular deviation]{
+    \includegraphics[width=0.3\textwidth]{images/ang_div.pdf}
+    \label{fig:behav:ang_div}
+    }    
+    \caption{Distribution of behavioral criteria which were used for the selection of valid trials. This is done to prevent outliers to influence the further analysis of the data. The selection criteria are chosen to discard only trials where the monkey failed in performing the task correctly.}
     \label{sg:fig:images_behav_crit}
 \end{figure}
+For all monkeys together there is data from in total 116 sessions available, in which EMG was recorded. Sessions were excluded from further analysis when the data suggested that a session does not represent a typical recording day or that there was something wrong with the data. The criteria for exclusion are defined as:
 
-
-For all monkeys together there is data from in total 116 sessions available, in which EMG was recorded. Sessions were excluded from further analysis when one of the following three criteria was met. 
 \begin{description}
     \item[not enough trials] It is data from less then \textbf{50} trials available. This affected only very few sessions as the average number of trials was 292.
     \item[unstable PD] As the preferred direction of a muscle showed to be stable over sessions, sessions where this was not the case were excluded. The criteria for exclusion was that the distance of a sessions PD to the average PD of this channel had to be larger than 2 standard deviations for more than 4 channels.
@@ -50,13 +60,49 @@ The selection was done by using the pronation position as supination was not ava
 
 
 % pd stability
-A plot of the preferred directions over sessions shows that they are stable over sessions and mostly have a significant p value. For all monkeys most of the channels have high significance values and low circular standard deviation. This allows to compute the circular mean. Less significance or higher variance in a channel does not necessarily mean that the recording was noisy. It can just mean that the muscle is not so much tuned to a special direction. Also the fact that e.g. channel 9 of subject V shows good stability for one hand-position but not for the other one. This supports the idea that small significance does not mean noisy channel but more untuned muscle
+\subsection{Preferred directions} % (fold)
+\label{sg:sub:preferred_directions}
+A plot of the preferred directions over sessions shows that they are stable over sessions and mostly have a significant p value. For all monkeys most of the channels have high significance values and low circular standard deviation. This allows to compute the circular mean. Less significance or higher variance in a channel does not necessarily mean that the recording was noisy. It can just mean that the muscle is not so much tuned to a special direction or that the tuning is dependent on the posture. This is shown e.g. for channel 9 of subject V \subref{fig:pd_bar:v} as it shows good stability for one hand-position but not for the other one. Therefore small significance does not mean noisy channel but only that a muscle is more untuned. In \rref{sg:fig:pd_barplots} it is visible that the selection of only significant PDs does not influence the outcome of the \emph{cstd} very much.
+
+% preferred direction barplots
 \begin{figure}[ht]
     \centering
-        \includegraphics[width=0.8\textwidth]{images/pd_consist_feather_vega.pdf}
-    \caption{The plot shows that the tuning of a muscle with respect to a preferred direction was significant for most of the sessions. Also that the PDs were stable over sessions which is expressed in low values of the standard deviation. Note that for example channel 9 suggests that unstable PD over session does not necessarily mean noisy recording, but can also be posture related lack of tuning of a muscle.}
-    \label{sg:fig:images_pd_consist_feather_allvega}
+    \subfigure[subject C]{
+    \includegraphics[width=0.3\textwidth]{images/pd_consist_bars_chalva.pdf}
+    \label{fig:pd_bar:c}
+    }
+    \subfigure[subject D]{
+    \includegraphics[width=0.3\textwidth]{images/pd_consist_bars_darma.pdf}
+    \label{fig:pd_bar:d}
+    }
+    \subfigure[subject V]{
+    \includegraphics[width=0.3\textwidth]{images/pd_consist_bars_vega.pdf}
+    \label{fig:pd_bar:v}
+    }    
+    \caption{For all subjects in most of the channels the preferred directions are are significantly tuned. In the plot it is also visible that the PDs were stable over sessions which is expressed in low values of the standard deviation. But also when they are not significantly tuned, it does not mean that the recording was noisy but rather that a certain muscle is not so much tuned for a certain direction. How much a muscle is tuned for a certain direction can also depend on the posture. The significance of a preferred direction does not have large influence on the \emph{cstd}.}
+    \label{sg:fig:pd_barplots}
 \end{figure}
+
+% preferred direction featherplots
+\begin{figure}[ht]
+    \centering
+    \subfigure[subject C]{
+    \includegraphics[width=0.3\textwidth]{images/pd_consist_feather_chalva.pdf}
+    \label{fig:pd_feather:c}
+    }
+    \subfigure[subject D]{
+    \includegraphics[width=0.3\textwidth]{images/pd_consist_feather_darma.pdf}
+    \label{fig:pd_feather:d}
+    }
+    \subfigure[subject V]{
+    \includegraphics[width=0.3\textwidth]{images/pd_consist_feather_vega.pdf}
+    \label{fig:pd_feather:v}
+    }    
+    \caption{This plot shows the PDs of channels in a more intuitive feather plot. Each arrow corresponds to the preferred direction of a sessions which makes it easy to see consistency over sessions (all arrows would point in the same direction). Preferred directions which are not tuned significantly are plotted with a dashed line. Please not that the PD is not necessarily and outlier when a muscle is not significantly tuned.}
+    \label{sg:fig:pd_featherplots}
+\end{figure}
+\clearpage
+% subsection preferred_directions (end)
 
 
 After the computation of evoked muscle-activation, the data was in form of a $\mathrm{trials} \times \mathrm{channels}$ matrix for each session and hand position. The whole subsequent analysis was always performed in parallel for separated hand positions and also for a $(\mathrm{supination trials} + \mathrm{pronation trials}) \times \mathrm{channels}$ 2-D matrix, containing the data for both hand positions. First the MF-algorithms were applied to the matrices containing pronation-position trying to reduce the dimensionality of the data to only one synergy (rank 1 model order). This was done in order to sort out sessions were EMG signals across channels are highly correlated. The PCAICA-algorithm led to generally smaller error values, but they were highly correlated with the remaining error values of the NMF-algorithm (r: 0.85, p << 0.001). NMF was, due to its biologically plausible assumptions, preferred in the further analysis and therefore also chosen for selection of sessions. 
@@ -187,7 +233,7 @@ To sum up, it was possible to extract 3 muscle synergies from data, which was co
 
 
 %output off all remaining pictures of this section
-\clearpage
+\afterpage{\clearpage}
 
 % section nat_mov_syns (end)
 
@@ -306,21 +352,28 @@ Interesting is to plot the cluster membership on the cortex which reveals for bo
 \section{Relation between evoked activation patterns and natural movement} % (fold)
 \label{sg:sec:synergy_relations}
 
-The preferred directions that were computed for each muscle in each recording session showed to be stable over recording days. There is a significant and also visually obvious difference of preferred directions depending on the posture of the hand~\rref{sg:fig:images_pd_consist_feather_allvega}. As the PDs showed to be stable over recording sessions, for each muscle the average over sessions was computed and used for further analysis.
+The preferred directions that were computed for each muscle in each recording session showed to be stable over recording days. There is a significant and also visually obvious difference of preferred directions depending on the posture of the hand~\rref{sg:fig:pd_featherplots}. As the PDs showed to be stable over recording sessions, for each muscle the average over sessions was computed and used for further analysis.
 
 
 \todo{rewrite this paragraph}
 
 The question, whether the cortical stimulation induced responses are just arbitrary activations of muscles that contain some structure but are not related to natural activation patterns or whether they have something in common with the activation patterns that were found during natural movement is an interesting question. If this were the case, it would imply that the stimulation sites are in fact the sites where neuronal activation causes modular organized muscle response patterns, if these happen to be found during natural movement. 
 
-In order to compare the evoked responses with the synergies found during natural movement evaluation of projections onto different subspaces was applied. The natural movement synergies computed on the pooled data from all sessions were used for this method. The data from evoked responses was projected onto the orthonormalized subspace that is spanned by the synergies and also on its orthogonal complement. The ratio of the vector sums of the data projected onto the two subspaces was for the evoked responses significantly higher than for random or randomized data. Although it is not a quantitative measure that gives a value for the relation between the two, the result suggests that there is a significant relation between the muscle response patterns, evoked by cortical stimulation and the synergies extracted from natural movement. 
-\begin{figure}[ht]
-	\centering
-		\includegraphics[width=0.5\textwidth]{images/projections.pdf}
-	\caption{Projection ratios of evoked responses, compared to 10000 runs of data with same statistical properties and shuffled versions of itself. The red line is the projection ratio of the original and un-shuffled evoked responses. It clearly shows that the evoked responses reside much more in the subspace spanned by the synergies than random data with same statistical properties.}
-	\label{sg:fig:images_projection}
-\end{figure}
+In order to compare the evoked responses with the synergies found during natural movement evaluation of projections onto different subspaces was applied. The natural movement synergies computed on the pooled data from all sessions were used for this method. The data from evoked responses was projected onto the orthonormalized subspace that is spanned by the synergies and also on its orthogonal complement. The ratio of the vector sums of the data projected onto the two subspaces was for the evoked responses significantly higher than for random or randomized data. Although it is not a quantitative measure that gives a value for the relation between the two, the result suggests that there is a significant relation between the muscle response patterns, evoked by cortical stimulation and the synergies extracted from natural movement.
 
+
+\begin{figure}[ht]
+\centering
+\subfigure[Subject C]{
+\includegraphics[width=0.4\textwidth]{images/projection_chalva.pdf}
+\label{fig:subfig1}
+}
+\subfigure[Subject V]{
+\includegraphics[width=0.4\textwidth]{images/projection_vega.pdf}
+\label{fig:subfig2}
+}
+\caption{Projection ratios of evoked responses, compared to 10000 runs of data with same statistical properties and shuffled versions of itself. The red line is the projection ratio of the original and un-shuffled evoked responses. It clearly shows that the evoked responses reside much more in the subspace spanned by the synergies than random data with same statistical properties.}
+\end{figure}
 
 
 
